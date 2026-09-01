@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-08-31T18:44:21+08:00",
+  "case_count": 3,
+  "cases_sha256": "64394ce7d2c0031e7a6447b63be09ada1932bfde470acc481133af8283446357",
+  "metrics": {
+    "query_execution_rate": 1.0,
+    "nonempty_result_rate": 1.0,
+    "expected_columns_rate": 0.3333333333333333,
+    "chart_selection_rate": 1.0,
+    "read_only_rate": 1.0,
+    "trace_completion_rate": 1.0,
+    "average_latency_seconds": 30.222041833333304,
+    "p95_latency_seconds": 60.36860769999839
+  },
+  "mode": "deepseek:deepseek-ai/DeepSeek-V4-Pro",
+  "segments": {
+    "category:trend": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 0.3333333333333333,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 30.222041833333304,
+      "p95_latency_seconds": 60.36860769999839
+    },
+    "difficulty:easy": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 0.5,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 15.148758900000757,
+      "p95_latency_seconds": 21.89412640000228
+    },
+    "difficulty:medium": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 0.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 60.36860769999839,
+      "p95_latency_seconds": 60.36860769999839
+    }
+  },
+  "cases": [
+    {
+      "case_id": "sales_01",
+      "question": "统计 2025 年每个月的销售额和订单量趋势",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 21.89412640000228,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "total_sales",
+        "order_count"
+      ]
+    },
+    {
+      "case_id": "sales_02",
+      "question": "查看月度订单金额趋势",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": false,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 8.403391399999236,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "sales_03",
+      "question": "按月份分析有效订单的销售额变化",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": false,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 60.36860769999839,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "sales"
+      ]
+    }
+  ]
+}

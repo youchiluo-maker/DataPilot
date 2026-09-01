@@ -1,0 +1,4 @@
+﻿case_id,question,executed,nonempty,columns_match,chart_match,read_only,trace_complete,row_count,latency_seconds,error,actual_columns
+sales_01,统计 2025 年每个月的销售额和订单量趋势,True,True,True,True,True,True,12,21.89412640000228,,"['month', 'total_sales', 'order_count']"
+sales_02,查看月度订单金额趋势,True,True,False,True,True,True,12,8.403391399999236,,"['month', 'total_amount']"
+sales_03,按月份分析有效订单的销售额变化,True,True,False,True,True,True,12,60.36860769999839,,"['month', 'sales']"

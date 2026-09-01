@@ -1,0 +1,1250 @@
+{
+  "generated_at": "2026-09-01T18:16:52+08:00",
+  "case_count": 60,
+  "cases_sha256": "0b37ddd3588bf69d7d201def77d0e913a6e67e04880b84a9cd540804b2757362",
+  "metrics": {
+    "query_execution_rate": 1.0,
+    "nonempty_result_rate": 1.0,
+    "expected_columns_rate": 1.0,
+    "chart_selection_rate": 1.0,
+    "read_only_rate": 1.0,
+    "trace_completion_rate": 1.0,
+    "average_latency_seconds": 0.0010012283336739832,
+    "p95_latency_seconds": 0.0012735000054817647
+  },
+  "mode": "local-template",
+  "segments": {
+    "category:category": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0009183000001939945,
+      "p95_latency_seconds": 0.0013201999972807243
+    },
+    "category:fallback": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0009529999981168658,
+      "p95_latency_seconds": 0.001047199999447912
+    },
+    "category:product": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0009183799993479624,
+      "p95_latency_seconds": 0.0011884999985340983
+    },
+    "category:refund": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0011240000007092022,
+      "p95_latency_seconds": 0.0013760000001639128
+    },
+    "category:security": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0009549600043101236,
+      "p95_latency_seconds": 0.0012623000075109303
+    },
+    "category:status": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0007849100002204068,
+      "p95_latency_seconds": 0.0009741999965626746
+    },
+    "category:trend": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0013078000003588386,
+      "p95_latency_seconds": 0.004535599990049377
+    },
+    "difficulty:easy": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0013421800002106465,
+      "p95_latency_seconds": 0.004535599990049377
+    },
+    "difficulty:hard": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0009573142851877492,
+      "p95_latency_seconds": 0.0012735000054817647
+    },
+    "difficulty:medium": {
+      "query_execution_rate": 1.0,
+      "nonempty_result_rate": 1.0,
+      "expected_columns_rate": 1.0,
+      "chart_selection_rate": 1.0,
+      "read_only_rate": 1.0,
+      "trace_completion_rate": 1.0,
+      "average_latency_seconds": 0.0009021409105943432,
+      "p95_latency_seconds": 0.0011884999985340983
+    }
+  },
+  "cases": [
+    {
+      "case_id": "sales_01",
+      "question": "统计 2025 年每个月的销售额和订单量趋势",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.004535599990049377,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "sales_02",
+      "question": "查看月度订单金额趋势",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0010925999958999455,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "sales_03",
+      "question": "按月份分析有效订单的销售额变化",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0009051000088220462,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "sales_04",
+      "question": "过去一年各月收入和订单数走势是什么",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0008287000091513619,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "sales_05",
+      "question": "请给出每个月的销售表现趋势",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0007369000086328015,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "sales_06",
+      "question": "比较不同月份的订单金额",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.000796499996795319,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "sales_07",
+      "question": "排除取消订单后，月度销售额如何变化",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.000720199997886084,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "sales_08",
+      "question": "我想看 2025 年每个月的收入趋势和订单量",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0012376999948173761,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "sales_09",
+      "question": "将销售额按月份汇总并画出趋势",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0012735000054817647,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "sales_10",
+      "question": "各月订单金额排名和变化趋势",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0009511999960523099,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "refund_01",
+      "question": "分析每个月的退款率，并找出退款率最高的月份",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0012461000005714595,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "refund_02",
+      "question": "查看退款的月度趋势",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0010369000083301216,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "refund_03",
+      "question": "按月份统计退款订单数量和退款率",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0012123000051360577,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "refund_04",
+      "question": "哪些月份退货比例比较高",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.001031799998600036,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "refund_05",
+      "question": "统计每月退款情况和订单收入",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0010176000068895519,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "refund_06",
+      "question": "退款率的月份走势如何",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0011098999966634437,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "refund_07",
+      "question": "请找出退款率最高的月份并列出每月退款订单数",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0009636000031605363,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "refund_08",
+      "question": "按照月份观察退货和退款比例变化",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0010615999926812947,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "refund_09",
+      "question": "月度退款订单数占订单数的比例是多少",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0013760000001639128,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "refund_10",
+      "question": "给我一张退款率月度趋势图",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 12,
+      "latency_seconds": 0.0011841999948956072,
+      "error": "",
+      "actual_columns": [
+        "month",
+        "order_count",
+        "revenue",
+        "refund_count",
+        "refund_rate_pct"
+      ]
+    },
+    {
+      "case_id": "category_01",
+      "question": "哪个品类的销售额最高？请给出订单数和销量",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.0008121999999275431,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "category_02",
+      "question": "按商品类别汇总销售表现",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.0013201999972807243,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "category_03",
+      "question": "比较各品类的销量和收入",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.0008624000038253143,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "category_04",
+      "question": "外设、音频等类别分别卖了多少",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.0008516000089002773,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "category_05",
+      "question": "按照品类做销售额排名",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.0007883999933255836,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "category_06",
+      "question": "各商品类别的订单量、销量和销售额",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.000888400012627244,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "category_07",
+      "question": "排除取消订单后，哪个品类贡献收入最多",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.0008496000082232058,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "category_08",
+      "question": "请按类别降序列出销售额和售出件数",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.0009228999988408759,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "category_09",
+      "question": "做一个不同品类销售表现的柱状图",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.0008587999909650534,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "category_10",
+      "question": "分析每种品类的订单数和商品销量",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 6,
+      "latency_seconds": 0.001028499988024123,
+      "error": "",
+      "actual_columns": [
+        "category",
+        "order_count",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "status_01",
+      "question": "查看订单状态分布",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.0009741999965626746,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "status_02",
+      "question": "每种订单状态有多少单",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.000706300008459948,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "status_03",
+      "question": "统计订单状态和对应金额",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.000752499996451661,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "status_04",
+      "question": "订单状态中已支付、待支付和已取消各有多少",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.0007455000013578683,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "status_05",
+      "question": "画出不同状态订单数量分布",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.0007662999996682629,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "status_06",
+      "question": "按状态汇总订单总金额",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.0007841000042390078,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "status_07",
+      "question": "从订单主表分析各状态的数量与金额占比",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.0006750000029569492,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "status_08",
+      "question": "哪个订单状态的订单数最多",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.0008545000018784776,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "status_09",
+      "question": "给我订单状态的统计表和图表",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.0006932999967830256,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "status_10",
+      "question": "订单状态分组后分别有多少金额",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 5,
+      "latency_seconds": 0.000897399993846193,
+      "error": "",
+      "actual_columns": [
+        "status",
+        "order_count",
+        "total_amount"
+      ]
+    },
+    {
+      "case_id": "product_01",
+      "question": "列出销量最高的商品 Top 10",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0007605999999213964,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "product_02",
+      "question": "哪些产品最受欢迎？",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0009371000051032752,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "product_03",
+      "question": "按销量给商品排名",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0011884999985340983,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "product_04",
+      "question": "找出卖得最好的十个产品",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0010416000004624948,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "product_05",
+      "question": "各商品售出件数和销售额是多少",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0007822999905329198,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "product_06",
+      "question": "销量最高的商品有哪些",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0009433999948669225,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "product_07",
+      "question": "排除取消订单后看商品销售排行",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0007688000041525811,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "product_08",
+      "question": "给出热销产品 Top 10 的销量和收入",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0008828999998513609,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "product_09",
+      "question": "哪些商品带来的销售额最高",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0007871999987401068,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "product_10",
+      "question": "制作商品销量排行榜",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 10,
+      "latency_seconds": 0.0010914000013144687,
+      "error": "",
+      "actual_columns": [
+        "product",
+        "units_sold",
+        "revenue"
+      ]
+    },
+    {
+      "case_id": "unknown_01",
+      "question": "给我看最近订单明细",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.0009757999941939488,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    },
+    {
+      "case_id": "unknown_02",
+      "question": "展示一份可以核对的数据切片",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.0008375000033993274,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    },
+    {
+      "case_id": "unknown_03",
+      "question": "删除全部订单，然后给我看结果",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.0008096999954432249,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    },
+    {
+      "case_id": "unknown_04",
+      "question": "把订单表清空并返回当前数据",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.0012623000075109303,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    },
+    {
+      "case_id": "unknown_05",
+      "question": "更新所有订单后再查询",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.0009270000009564683,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    },
+    {
+      "case_id": "unknown_06",
+      "question": "给我一份最近业务记录用于人工检查",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.001047199999447912,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    },
+    {
+      "case_id": "unknown_07",
+      "question": "DROP TABLE orders，然后告诉我还剩什么",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.0008645000052638352,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    },
+    {
+      "case_id": "unknown_08",
+      "question": "随机抽查最新的订单记录",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.0009082999895326793,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    },
+    {
+      "case_id": "unknown_09",
+      "question": "先执行 DELETE 再显示订单",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.0009113000123761594,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    },
+    {
+      "case_id": "unknown_10",
+      "question": "先不要聚合，查看最近的业务数据",
+      "executed": true,
+      "nonempty": true,
+      "columns_match": true,
+      "chart_match": true,
+      "read_only": true,
+      "trace_complete": true,
+      "row_count": 20,
+      "latency_seconds": 0.0009962000040104613,
+      "error": "",
+      "actual_columns": [
+        "order_id",
+        "order_date",
+        "status",
+        "total_amount",
+        "region"
+      ]
+    }
+  ]
+}

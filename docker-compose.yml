@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - datapilot_state:/app/.datapilot
+  api:
+    build: .
+    command: ["uvicorn", "api_app:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - datapilot_state:/app/.datapilot
+
+volumes:
+  datapilot_state:

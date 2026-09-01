@@ -1,0 +1,10 @@
+.venv
+.env
+.git
+.gitignore
+__pycache__
+.pytest_cache
+.test_tmp
+.datapilot
+benchmark_results
+.idea

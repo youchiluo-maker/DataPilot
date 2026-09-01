@@ -1,0 +1,11 @@
+.env
+.venv/
+.idea/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.test_tmp/
+benchmark_results/benchmark-*.json
+benchmark_results/benchmark-*.csv
+benchmark_results/benchmark-*.md
+.datapilot/
