@@ -12,11 +12,23 @@ DataPilot 是一个独立的自然语言数据分析 Agent。它面向电商业�
 - SQL 单语句校验、危险操作拦截、SQLite authorizer 二次只读防护和表范围 allowlist；
 - 查询最大返回行数和执行超时控制；
 - 真实结果摘要、原始数据表、图表、SQL 和执行轨迹；
+- 基于查询结果生成峰值、排名和趋势结论，并返回可追溯到结果行的结构化证据；
 - 统一 `AnalysisService` 服务层，网页和 HTTP API 共用同一条分析链路；
 - 每次运行生成 `run_id`，将状态、耗时、SQL、模型、降级和警告写入本地审计库；
 - 提供 FastAPI 健康检查、分析接口和运行记录接口，可用 Docker Compose 启动双入口；
 - pytest 覆盖数据一致性、SQL 安全、Agent 降级和模型修复流程；
-- 60 条固定业务问题评测集，支持本地基线、DeepSeek smoke test 和按场景分组指标。
+- 60 条固定业务问题评测集，支持结果集逐值校验、DeepSeek 分层抽样和按场景分组指标。
+
+## 业务语义层
+
+DataPilot 为演示电商数据定义了统一指标口径，避免模型和本地模板各算各的：
+
+- 有效订单：`paid`、`shipped`、`completed`；
+- 销售额与销量：只统计有效订单；
+- 退款率：退款订单数 / 有效订单数；
+- 统一字段别名：`month`、`order_count`、`revenue`、`refund_count`、`refund_rate_pct`、`category`、`units_sold`、`product`。
+
+模型规划与本地模板共用这些口径；评测通过可信 Oracle SQL 对结果值进行核验，而不再只检查 SQL 是否能运行和列名是否存在。
 
 ## 自定义 CSV
 
@@ -35,13 +47,13 @@ Set-Location D:\DATAPILOT
 .\.venv\Scripts\python.exe run_benchmark.py
 ```
 
-评测会统计查询执行率、非空结果率、预期字段命中率、图表选择准确率、只读 SQL 通过率、执行轨迹完整率、平均延迟和 P95 延迟，并按意图类别、难度输出分组指标，更新 `benchmark_results/latest.*`。
+评测会统计查询执行率、非空结果率、预期字段命中率、结果集正确率、图表选择准确率、只读 SQL 通过率、执行轨迹完整率、平均延迟和 P95 延迟，并按意图类别、难度输出分组指标。模型报告还记录实际 SQL、降级状态和警告，便于复盘失败案例。
 
-先用 3 条案例做 DeepSeek smoke test（会消耗 API 额度）：
+先按 7 个意图类别各抽 1 条做 DeepSeek 分层 smoke test（会消耗 API 额度）：
 
 ```powershell
 Set-Location D:\DATAPILOT
-.\.venv\Scripts\python.exe run_benchmark.py --mode model --limit 3 --output-dir benchmark_results\model_smoke
+.\.venv\Scripts\python.exe run_benchmark.py --mode model --model deepseek-ai/DeepSeek-V4-FLASH --sample-per-category 1 --output-dir benchmark_results\model_stratified_v3
 ```
 
 确认配置和结果稳定后，再运行完整 60 条模型评测：
@@ -52,10 +64,12 @@ Set-Location D:\DATAPILOT
 
 `benchmark_results/latest.md` 是可直接放进项目说明的实验报告；本地模式用于稳定回归，模型模式用于衡量真实规划能力，两者不应混为一个指标。
 
-最近一次可复现结果：
+最近一次可复现结果（2026-09-03）：
 
-- 本地 60 条基线：查询执行率、字段命中率、图表选择、只读通过率、轨迹完整率均为 100%；平均延迟约 0.95 ms，P95 约 1.16 ms；
-- DeepSeek 3 条 smoke test：上述正确性指标均为 100%；平均延迟约 43.5 s，P95 约 48.4 s。模型报告保存在 `benchmark_results/model_smoke_v3/`，延迟包含真实网络和模型生成时间。
+- 本地 60 条基线：查询执行率、字段命中率、结果集正确率、图表选择、只读通过率和轨迹完整率均为 100%；平均延迟约 1.61 ms，P95 约 1.82 ms；
+- DeepSeek-V4-FLASH 7 类分层评测：查询执行率、结果集正确率、字段命中率和只读通过率均为 100%，图表选择准确率 85.7%，系统降级率 42.9%；平均延迟约 33.32 s，P95 约 120.50 s；
+- 其中 3 条案例触发了安全策略拦截、模型超时或受限修复后降级，但仍返回了正确的只读结果；这组数据衡量的是“模型规划 + 系统防护 + 降级”的整体闭环，不代表通用 Text-to-SQL 准确率；
+- 模型报告保存在 `benchmark_results/model_stratified_v3/`，延迟包含真实网络、模型重试和生成时间。
 
 ## 启动
 
@@ -109,14 +123,22 @@ New-Item -ItemType Directory -Force .test_tmp | Out-Null
 
 - **可靠性**：模型不可用、返回非法 JSON、SQL 字段错误时都有可观测的降级路径；
 - **安全性**：文本检查和 SQLite authorizer 双重拦截写操作，危险请求仍返回安全的只读数据切片；
-- **可评测**：固定 60 条案例、SHA-256 版本指纹、整体与分组指标、平均/P95 延迟；
-- **可解释**：结果摘要只从真实查询结果计算，页面展示执行 SQL、模型思路、警告和每一步轨迹；
+- **可评测**：固定 60 条案例、Oracle SQL 结果集逐值核验、SHA-256 版本指纹、分层抽样、整体与分组指标、平均/P95 延迟；
+- **可解释**：结果摘要只从真实查询结果计算，并为峰值、排名和趋势结论提供结果行与关键值证据；
 - **可测试**：核心逻辑与 Streamlit UI 解耦，pytest 覆盖数据库、SQL 防护、规划、修复重试和 benchmark。
 - **持续集成**：GitHub Actions 在 push / pull request 时自动安装依赖并执行完整 pytest。
-- **服务化**：`api_app.py` 暴露 `/healthz`、`/v1/analyze` 和 `/v1/runs`，支持通过 `DATAPILOT_API_TOKEN` 开启 API Key 校验。
+- **服务化**：`api_app.py` 暴露 `/healthz`、`/v1/analyze` 和 `/v1/runs`，支持 API Key 校验、部署时强制鉴权和模型白名单。
 - **可运维**：模型超时、重试次数和运行记录路径均可通过环境变量调整；审计数据默认写入 `.datapilot/audit.db`。
 
 当前仍是单机生产原型：演示数据使用 SQLite 内存库，审计记录使用本地 SQLite 文件。面向多实例生产还需要接入 PostgreSQL、真实身份系统、SQL AST 级 allowlist、限流配额、异步任务队列和集中式日志/指标。
+
+公开部署时建议配置：
+
+```text
+DATAPILOT_REQUIRE_API_TOKEN=true
+DATAPILOT_API_TOKEN=replace_with_a_strong_random_token
+DATAPILOT_ALLOWED_MODELS=deepseek-ai/DeepSeek-V4-Pro,deepseek-ai/DeepSeek-V4-FLASH
+```
 
 ## 服务化运行
 

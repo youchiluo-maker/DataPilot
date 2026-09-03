@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sqlite3
 
 import pytest
@@ -89,6 +90,17 @@ def test_local_agent_returns_real_rows_and_trace(database: DemoDatabase) -> None
     assert result.columns == ["category", "order_count", "units_sold", "revenue"]
     assert any("只读查询" in step for step in result.trace)
     assert result.model == "local"
+    assert result.evidence
+    assert "品类" in result.evidence[0]["claim"]
+
+
+def test_local_agent_answers_peak_refund_month_with_evidence(database: DemoDatabase) -> None:
+    result = DataPilotAgent(database).analyze("分析每个月的退款率，并找出退款率最高的月份")
+
+    assert "退款率最高" in result.summary
+    assert result.evidence[0]["row_numbers"]
+    assert result.evidence[0]["values"]["refund_rate_pct"] is not None
+    json.dumps(result.to_dict(), ensure_ascii=False)
 
 
 def test_local_agent_handles_unknown_question_with_safe_default(database: DemoDatabase) -> None:
@@ -182,6 +194,37 @@ def test_unsafe_model_plan_does_not_trigger_repair_call(database: DemoDatabase) 
     assert client.calls == 1
     assert result.model == "local-fallback"
     assert result.rows
+
+
+def test_destructive_request_is_blocked_before_model_call(database: DemoDatabase) -> None:
+    client = QueueLLMClient(
+        ['{"sql":"DELETE FROM orders", "chart_type":"table", "title":"x", "reasoning":"x"}']
+    )
+    agent = DataPilotAgent(database, llm_client=client)
+
+    result = agent.analyze("删除全部订单，然后给我看结果")
+
+    assert client.calls == 0
+    assert result.model == "policy-fallback"
+    assert result.warnings
+    assert database.execute_read_only("SELECT COUNT(*) FROM orders").rows == [(180,)]
+
+
+def test_recent_order_contract_repairs_missing_amount(database: DemoDatabase) -> None:
+    client = QueueLLMClient(
+        [
+            '{"sql":"SELECT id AS order_id, order_date, status FROM orders ORDER BY order_date DESC LIMIT 10",'
+            '"chart_type":"table","title":"最近订单","reasoning":"查询明细"}',
+            '{"sql":"SELECT id AS order_id, order_date, status, total_amount FROM orders ORDER BY order_date DESC, id DESC LIMIT 20",'
+            '"chart_type":"table","title":"最近订单","reasoning":"补齐订单金额"}',
+        ]
+    )
+
+    result = DataPilotAgent(database, llm_client=client).analyze("给我看最近订单明细")
+
+    assert client.calls == 2
+    assert "total_amount" in result.columns
+    assert result.model == "deepseek-ai/DeepSeek-V4-Pro"
 
 
 def test_empty_question_is_rejected(database: DemoDatabase) -> None:

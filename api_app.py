@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import logging
 import secrets
 from functools import lru_cache
 from typing import Annotated
@@ -8,11 +9,15 @@ from typing import Annotated
 from fastapi import Depends, FastAPI, Header, HTTPException, status
 from pydantic import BaseModel, Field
 
+from data_pilot.agent import DataAgentError
 from data_pilot.audit import AuditStore
 from data_pilot.config import load_settings
-from data_pilot.database import DemoDatabase
+from data_pilot.database import DemoDatabase, QueryExecutionError, SQLSafetyError
 from data_pilot.llm_client import DeepSeekClient
 from data_pilot.service import AnalysisService
+
+
+logger = logging.getLogger("datapilot.api")
 
 
 class AnalyzeRequest(BaseModel):
@@ -30,6 +35,7 @@ class AnalyzeResponse(BaseModel):
     chart_type: str
     reasoning: str
     summary: str
+    evidence: list[dict[str, object]]
     columns: list[str]
     rows: list[list[object]]
     trace: list[str]
@@ -54,12 +60,28 @@ def get_service() -> AnalysisService:
 
 def require_api_key(x_api_key: Annotated[str | None, Header()] = None) -> None:
     """Enable a lightweight deployment guard when DATAPILOT_API_TOKEN is configured."""
+    settings = load_settings()
     expected = os.getenv("DATAPILOT_API_TOKEN")
+    if settings.api_token_required and not expected:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="服务要求 API Token，但尚未完成配置。",
+        )
     if expected and (not x_api_key or not secrets.compare_digest(x_api_key, expected)):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="缺少或错误的 API Key。",
         )
+
+
+def validate_model_id(
+    model: str | None, default_model: str, allowed_models: tuple[str, ...]
+) -> str:
+    """Allow only configured DeepSeek model IDs instead of arbitrary upstream targets."""
+    selected = model or default_model
+    if selected not in allowed_models:
+        raise HTTPException(status_code=400, detail="不允许使用未配置的模型。")
+    return selected
 
 
 app = FastAPI(
@@ -77,6 +99,8 @@ def healthz() -> dict[str, object]:
         "service": "datapilot",
         "model_configured": settings.model_configured,
         "default_model": settings.default_model,
+        "api_token_required": settings.api_token_required,
+        "allowed_models": list(settings.allowed_models),
     }
 
 
@@ -87,18 +111,25 @@ def healthz() -> dict[str, object]:
 )
 def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
     service = get_service()
-    if request.model:
+    settings = load_settings()
+    selected_model = validate_model_id(
+        request.model, service.model, settings.allowed_models
+    )
+    if selected_model != service.model:
         service = AnalysisService(
             service.database,
             llm_client=service.llm_client,
-            model=request.model,
+            model=selected_model,
             audit_store=service.audit_store,
             source=service.source,
         )
     try:
         result = service.analyze(request.question)
-    except Exception as exc:
+    except (DataAgentError, QueryExecutionError, SQLSafetyError) as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:
+        logger.exception("unexpected_analysis_error")
+        raise HTTPException(status_code=500, detail="分析服务内部错误。") from exc
     return AnalyzeResponse(
         run_id=result.run_id,
         question=result.question,
@@ -109,6 +140,7 @@ def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
         chart_type=result.chart_type,
         reasoning=result.reasoning,
         summary=result.summary,
+        evidence=result.evidence,
         columns=result.columns,
         rows=[list(row) for row in result.rows],
         trace=result.trace,

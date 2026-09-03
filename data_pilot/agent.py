@@ -41,6 +41,7 @@ class AnalysisResult:
     columns: list[str]
     rows: list[tuple[Any, ...]]
     summary: str
+    evidence: list[dict[str, Any]] = field(default_factory=list)
     trace: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
     model: str = "local-template"
@@ -69,6 +70,8 @@ SYSTEM_PROMPT = """你是 DataPilot 的 SQL 分析规划器。你的任务是把
 4. 只能使用提供的表和字段；不要臆造数据。
 5. chart_type 只能是 line、bar、table、none 之一。
 6. reasoning 只说明查询思路，不要虚构查询结果。
+7. 统一字段别名：月份 month、订单数 order_count、销售额 revenue、退款数 refund_count、退款率 refund_rate_pct、品类 category、销量 units_sold、商品 product。
+8. 业务口径：有效订单状态仅为 paid、shipped、completed；销售额、销量和退款率分母必须排除 pending 与 cancelled。
 """
 
 
@@ -81,6 +84,7 @@ REPAIR_PROMPT = """你是 DataPilot 的 SQL 修复器。上一次查询已经通
 3. 禁止任何写操作、管理操作、多语句和臆造字段。
 4. chart_type 只能是 line、bar、table、none 之一。
 5. 不要解释过程，不要输出 Markdown 代码块。
+6. 有效订单状态仅为 paid、shipped、completed；沿用统一字段别名。
 """
 
 
@@ -104,12 +108,24 @@ class DataPilotAgent:
         trace = ["解析用户问题。", "读取数据库 Schema 和字段说明。"]
         warnings: list[str] = []
 
-        plan = self._model_plan(question, trace, warnings)
-        if plan is None:
+        if self._is_destructive_request(question):
+            warnings.append("检测到写操作意图；已拒绝执行，并改为返回安全的只读数据预览。")
+            trace.append("输入策略层拦截写操作意图，跳过模型规划。")
             plan = self._local_plan(question)
-            trace.append("使用本地查询模板生成可复现的分析计划。")
+            plan = QueryPlan(
+                sql=plan.sql,
+                chart_type=plan.chart_type,
+                title=plan.title,
+                reasoning="拒绝执行数据修改请求，仅返回安全的只读结果。",
+                source="policy-fallback",
+            )
         else:
-            trace.append(f"模型生成查询计划：{self.model}。")
+            plan = self._model_plan(question, trace, warnings)
+            if plan is None:
+                plan = self._local_plan(question)
+                trace.append("使用本地查询模板生成可复现的分析计划。")
+            else:
+                trace.append(f"模型生成查询计划：{self.model}。")
 
         try:
             trace.append("执行 SQL 只读安全检查。")
@@ -146,7 +162,7 @@ class DataPilotAgent:
                 )
 
         trace.append(f"完成只读查询，返回 {len(query.rows)} 行、{len(query.columns)} 列。")
-        summary = self._summarize(question, plan, query.columns, query.rows)
+        summary, evidence = self._summarize(question, plan, query.columns, query.rows)
         trace.append("根据真实查询结果生成摘要和图表建议。")
         return AnalysisResult(
             question=question,
@@ -158,6 +174,7 @@ class DataPilotAgent:
             columns=query.columns,
             rows=query.rows,
             summary=summary,
+            evidence=evidence,
             trace=trace,
             warnings=warnings,
             model=self.model if plan.source in {"model", "model-repair"} else plan.source,
@@ -256,6 +273,8 @@ class DataPilotAgent:
     @staticmethod
     def _required_columns(question: str) -> set[str]:
         q = question.lower()
+        if "订单" in q and any(keyword in q for keyword in ("最近", "明细", "记录")):
+            return {"order_id", "order_date", "status", "total_amount"}
         if ("退款" in q or "退货" in q) and ("月" in q or "月份" in q):
             return {"month", "refund_count", "refund_rate_pct"}
         if "品类" in q or "类别" in q:
@@ -271,6 +290,8 @@ class DataPilotAgent:
             required = {"status", "order_count"}
             if "金额" in q or "销售" in q or "收入" in q:
                 required.add("total_amount")
+            if "占比" in q:
+                required.update({"order_share_pct", "amount_share_pct"})
             return required
         if "商品" in q or "产品" in q or "销量" in q:
             required = {"product"}
@@ -287,6 +308,23 @@ class DataPilotAgent:
                 required.add("revenue")
             return required
         return set()
+
+    @staticmethod
+    def _is_destructive_request(question: str) -> bool:
+        normalized = question.lower()
+        return any(
+            keyword in normalized
+            for keyword in (
+                "删除",
+                "清空",
+                "更新所有",
+                "drop table",
+                "delete from",
+                "truncate",
+                "update ",
+                "insert ",
+            )
+        )
 
     @staticmethod
     def _plan_from_json(payload: dict[str, Any], *, source: str) -> QueryPlan:
@@ -339,7 +377,7 @@ WITH monthly AS (
            COUNT(*) AS order_count,
            ROUND(SUM(total_amount), 2) AS revenue
     FROM orders
-    WHERE status <> 'cancelled'
+    WHERE status IN ('paid', 'shipped', 'completed')
     GROUP BY substr(order_date, 1, 7)
 ), refund_monthly AS (
     SELECT substr(refund_date, 1, 7) AS month,
@@ -371,7 +409,7 @@ SELECT p.category AS category,
 FROM orders o
 JOIN order_items oi ON oi.order_id = o.id
 JOIN products p ON p.id = oi.product_id
-WHERE o.status <> 'cancelled'
+WHERE o.status IN ('paid', 'shipped', 'completed')
 GROUP BY p.category
 ORDER BY revenue DESC
 """,
@@ -380,35 +418,67 @@ ORDER BY revenue DESC
                 reasoning="关联订单明细和商品品类，按品类统计订单数、销量和销售额。",
             )
         if "状态" in q:
+            requested_statuses = [
+                status
+                for keyword, status in (
+                    ("已支付", "paid"),
+                    ("待支付", "pending"),
+                    ("已取消", "cancelled"),
+                )
+                if keyword in q
+            ]
+            where_clause = ""
+            if requested_statuses:
+                quoted = ", ".join(f"'{status}'" for status in requested_statuses)
+                where_clause = f"\nWHERE status IN ({quoted})"
+            include_shares = "占比" in q
+            select_suffix = ""
+            if include_shares:
+                select_suffix = """,
+       ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS order_share_pct,
+       ROUND(SUM(total_amount) * 100.0 / SUM(SUM(total_amount)) OVER (), 2) AS amount_share_pct"""
             return QueryPlan(
-                sql="""
+                sql=f"""
 SELECT status, COUNT(*) AS order_count,
-       ROUND(SUM(total_amount), 2) AS total_amount
+       ROUND(SUM(total_amount), 2) AS total_amount{select_suffix}
 FROM orders
+{where_clause}
 GROUP BY status
 ORDER BY order_count DESC
 """,
                 chart_type="bar",
-                title="订单状态分布",
-                reasoning="按订单状态分组，统计订单量和金额。",
+                title="指定订单状态统计" if requested_statuses else "订单状态分布",
+                reasoning=(
+                    "按用户指定的订单状态筛选后统计数量和金额。"
+                    if requested_statuses
+                    else "按订单状态分组，统计订单量、金额及所需占比。"
+                ),
             )
         if "商品" in q or "产品" in q or "销量" in q:
+            order_metric = (
+                "revenue"
+                if "销售额最高" in q or "收入最高" in q
+                else "units_sold"
+            )
             return QueryPlan(
-                sql="""
+                sql=f"""
 SELECT p.name AS product,
        SUM(oi.quantity) AS units_sold,
        ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue
 FROM order_items oi
 JOIN products p ON p.id = oi.product_id
 JOIN orders o ON o.id = oi.order_id
-WHERE o.status <> 'cancelled'
+WHERE o.status IN ('paid', 'shipped', 'completed')
 GROUP BY p.id, p.name
-ORDER BY units_sold DESC
+ORDER BY {order_metric} DESC
 LIMIT 10
 """,
                 chart_type="bar",
                 title="热销商品 Top 10",
-                reasoning="从订单明细汇总商品销量，并排除已取消订单。",
+                reasoning=(
+                    "从订单明细汇总商品指标，排除已取消订单，"
+                    f"并按 {order_metric} 降序排名。"
+                ),
             )
         if "月" in q or "趋势" in q or "销售额" in q or "订单金额" in q:
             return QueryPlan(
@@ -417,7 +487,7 @@ SELECT substr(order_date, 1, 7) AS month,
        COUNT(*) AS order_count,
        ROUND(SUM(total_amount), 2) AS revenue
 FROM orders
-WHERE status <> 'cancelled'
+WHERE status IN ('paid', 'shipped', 'completed')
 GROUP BY substr(order_date, 1, 7)
 ORDER BY month
 """,
@@ -440,24 +510,241 @@ LIMIT 20
             reasoning="问题未匹配到聚合模板，先返回最近订单作为可检查的数据切片。",
         )
 
-    @staticmethod
+    @classmethod
     def _summarize(
-        question: str, plan: QueryPlan, columns: list[str], rows: list[tuple[Any, ...]]
-    ) -> str:
+        cls,
+        question: str,
+        plan: QueryPlan,
+        columns: list[str],
+        rows: list[tuple[Any, ...]],
+    ) -> tuple[str, list[dict[str, Any]]]:
         if not rows:
-            return "查询成功，但没有返回记录。可以扩大时间范围或检查筛选条件。"
+            return "查询成功，但没有返回记录。可以扩大时间范围或检查筛选条件。", []
         frame = pd.DataFrame(rows, columns=columns)
+        q = question.lower()
+        evidence: list[dict[str, Any]] = []
+
+        month = cls._resolve_column(frame, "month")
+        refund_rate = cls._resolve_column(frame, "refund_rate_pct")
+        refund_count = cls._resolve_column(frame, "refund_count")
+        revenue = cls._resolve_column(frame, "revenue")
+        order_count = cls._resolve_column(frame, "order_count")
+        category = cls._resolve_column(frame, "category")
+        product = cls._resolve_column(frame, "product")
+        units_sold = cls._resolve_column(frame, "units_sold")
+        status = cls._resolve_column(frame, "status")
+        total_amount = cls._resolve_column(frame, "total_amount")
+
+        if month and refund_rate:
+            row_number, row = cls._extreme_row(frame, refund_rate)
+            values = {
+                "month": row[month],
+                "refund_rate_pct": row[refund_rate],
+            }
+            claim = (
+                f"{row[month]} 的退款率最高，为 "
+                f"{cls._format_number(row[refund_rate])}%。"
+            )
+            if refund_count:
+                values["refund_count"] = row[refund_count]
+                claim = claim[:-1] + f"，对应 {cls._format_number(row[refund_count])} 笔退款。"
+            evidence.append(cls._evidence(claim, row_number, values))
+            return f"已完成月度退款分析。{claim}", evidence
+
+        if category:
+            prefer_units = any(keyword in q for keyword in ("销量", "售出", "卖了多少"))
+            prefer_orders = "订单" in q and not prefer_units and not revenue
+            metric = (
+                units_sold
+                if prefer_units and units_sold
+                else order_count
+                if prefer_orders and order_count
+                else revenue or units_sold or order_count
+            )
+            if metric:
+                row_number, row = cls._extreme_row(frame, metric)
+                metric_label = (
+                    "销售额"
+                    if metric == revenue
+                    else "销量"
+                    if metric == units_sold
+                    else "订单数"
+                )
+                claim = (
+                    f"表现最高的品类是 {row[category]}，"
+                    f"{metric_label}为 {cls._format_number(row[metric])}。"
+                )
+                evidence.append(
+                    cls._evidence(
+                        claim,
+                        row_number,
+                        {"category": row[category], metric_label: row[metric]},
+                    )
+                )
+                return f"已比较 {len(frame)} 个品类。{claim}", evidence
+
+        if product:
+            prefer_revenue = any(keyword in q for keyword in ("销售额", "收入", "金额"))
+            metric = revenue if prefer_revenue and revenue else units_sold or revenue
+            if metric:
+                row_number, row = cls._extreme_row(frame, metric)
+                metric_label = "销售额" if metric == revenue else "销量"
+                claim = (
+                    f"排名第一的商品是 {row[product]}，"
+                    f"{metric_label}为 {cls._format_number(row[metric])}。"
+                )
+                evidence.append(
+                    cls._evidence(
+                        claim,
+                        row_number,
+                        {"product": row[product], metric_label: row[metric]},
+                    )
+                )
+                return f"已完成 {len(frame)} 个商品的排名分析。{claim}", evidence
+
+        if status and order_count:
+            row_number, row = cls._extreme_row(frame, order_count)
+            total_orders = pd.to_numeric(frame[order_count], errors="coerce").sum()
+            claim = (
+                f"共统计 {cls._format_number(total_orders)} 笔订单，"
+                f"数量最多的状态是 {row[status]}，"
+                f"共 {cls._format_number(row[order_count])} 笔。"
+            )
+            values: dict[str, Any] = {
+                "status": row[status],
+                "order_count": row[order_count],
+                "total_orders": total_orders,
+            }
+            if total_amount:
+                values["total_amount"] = row[total_amount]
+            evidence.append(cls._evidence(claim, row_number, values))
+            return claim, evidence
+
+        if month and revenue:
+            trend_frame = frame.sort_values(month)
+            row_number, peak = cls._extreme_row(frame, revenue)
+            claim = (
+                f"销售额峰值出现在 {peak[month]}，"
+                f"为 {cls._format_number(peak[revenue])}。"
+            )
+            evidence.append(
+                cls._evidence(
+                    claim,
+                    row_number,
+                    {"month": peak[month], "revenue": peak[revenue]},
+                )
+            )
+            if len(trend_frame) >= 2:
+                first = trend_frame.iloc[0]
+                last = trend_frame.iloc[-1]
+                first_row = int(frame.index.get_loc(first.name)) + 1
+                last_row = int(frame.index.get_loc(last.name)) + 1
+                first_value = float(first[revenue])
+                last_value = float(last[revenue])
+                if first_value:
+                    change = (last_value - first_value) / abs(first_value) * 100
+                    direction = "增长" if change >= 0 else "下降"
+                    trend_claim = (
+                        f"从 {first[month]} 到 {last[month]}，"
+                        f"销售额{direction} {abs(change):.2f}%。"
+                    )
+                    evidence.append(
+                        cls._evidence(
+                            trend_claim,
+                            [first_row, last_row],
+                            {
+                                "start_month": first[month],
+                                "start_revenue": first[revenue],
+                                "end_month": last[month],
+                                "end_revenue": last[revenue],
+                            },
+                        )
+                    )
+                    claim = f"{claim}{trend_claim}"
+            return claim, evidence
+
         numeric = frame.select_dtypes(include="number").columns.tolist()
         pieces = [f"本次分析返回 {len(frame)} 行、{len(columns)} 列。"]
         if numeric:
             first_numeric = numeric[0]
             series = pd.to_numeric(frame[first_numeric], errors="coerce").dropna()
             if not series.empty:
-                pieces.append(
-                    f"指标 {first_numeric} 的范围为 {series.min():,.2f} 到 {series.max():,.2f}。"
+                claim = (
+                    f"指标 {first_numeric} 的范围为 "
+                    f"{cls._format_number(series.min())} 到 "
+                    f"{cls._format_number(series.max())}。"
+                )
+                pieces.append(claim)
+                evidence.append(
+                    cls._evidence(
+                        claim,
+                        [],
+                        {"min": series.min(), "max": series.max()},
+                    )
                 )
         if plan.chart_type in {"line", "bar"}:
             pieces.append(f"已根据查询计划生成{plan.title}图表，详细 SQL 和原始结果见下方。")
         else:
             pieces.append("当前结果更适合以明细表查看，详细 SQL 和原始结果见下方。")
-        return " ".join(pieces)
+        return " ".join(pieces), evidence
+
+    @staticmethod
+    def _resolve_column(frame: pd.DataFrame, canonical: str) -> str | None:
+        aliases = {
+            "month": ("month", "月份"),
+            "refund_rate_pct": ("refund_rate_pct", "refund_rate", "rate"),
+            "refund_count": ("refund_count", "refunds"),
+            "revenue": (
+                "revenue",
+                "sales",
+                "sales_amount",
+                "total_sales",
+                "total_amount",
+            ),
+            "order_count": ("order_count", "orders", "order_num", "count"),
+            "category": ("category", "category_name"),
+            "product": ("product", "product_name"),
+            "units_sold": ("units_sold", "quantity", "sales_volume"),
+            "status": ("status",),
+            "total_amount": ("total_amount", "amount"),
+        }
+        lookup = {str(column).lower(): str(column) for column in frame.columns}
+        return next(
+            (
+                lookup[name]
+                for name in aliases.get(canonical, (canonical,))
+                if name in lookup
+            ),
+            None,
+        )
+
+    @staticmethod
+    def _extreme_row(frame: pd.DataFrame, column: str) -> tuple[int, pd.Series]:
+        values = pd.to_numeric(frame[column], errors="coerce")
+        valid = values.dropna()
+        if valid.empty:
+            return 1, frame.iloc[0]
+        index = valid.idxmax()
+        return int(frame.index.get_loc(index)) + 1, frame.loc[index]
+
+    @staticmethod
+    def _format_number(value: Any) -> str:
+        number = float(value)
+        if number.is_integer():
+            return f"{int(number):,}"
+        return f"{number:,.2f}"
+
+    @staticmethod
+    def _evidence(
+        claim: str, row_numbers: int | list[int], values: dict[str, Any]
+    ) -> dict[str, Any]:
+        normalized_rows = row_numbers if isinstance(row_numbers, list) else [row_numbers]
+        normalized_values = {
+            key: value.item() if hasattr(value, "item") else value
+            for key, value in values.items()
+        }
+        return {
+            "claim": claim,
+            "row_numbers": normalized_rows,
+            "values": normalized_values,
+        }

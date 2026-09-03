@@ -33,6 +33,12 @@ def main() -> None:
         help="只运行前 N 条案例，适合先做模型 smoke test",
     )
     parser.add_argument(
+        "--sample-per-category",
+        type=int,
+        default=None,
+        help="每个意图类别抽取 N 条，适合运行覆盖面更均衡的模型评测",
+    )
+    parser.add_argument(
         "--output-dir",
         type=Path,
         default=PROJECT_ROOT / "benchmark_results",
@@ -58,6 +64,7 @@ def main() -> None:
         agent_factory=factory,
         mode=mode,
         limit=args.limit,
+        sample_per_category=args.sample_per_category,
     )
     paths = save_report(report, args.output_dir)
     print(f"完成 {report.case_count} 个评测案例，模式：{report.mode}。")
@@ -67,6 +74,7 @@ def main() -> None:
     for name in (
         "query_execution_rate",
         "expected_columns_rate",
+        "answer_accuracy",
         "chart_selection_rate",
         "read_only_rate",
         "p95_latency_seconds",

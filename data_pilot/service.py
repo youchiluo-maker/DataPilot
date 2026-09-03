@@ -47,7 +47,10 @@ class AnalysisService:
                 run_id=run_id,
                 source=self.source,
                 status="success",
-                fallback_used=result.model == "local-fallback",
+                fallback_used=(
+                    self.llm_client is not None
+                    and result.model in {"local", "local-fallback", "policy-fallback"}
+                ),
             )
             self._record(result, started)
             logger.info(

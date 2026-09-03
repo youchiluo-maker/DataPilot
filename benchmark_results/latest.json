@@ -1,16 +1,18 @@
 {
-  "generated_at": "2026-09-01T18:16:52+08:00",
+  "generated_at": "2026-09-03T15:40:48+08:00",
   "case_count": 60,
-  "cases_sha256": "0b37ddd3588bf69d7d201def77d0e913a6e67e04880b84a9cd540804b2757362",
+  "cases_sha256": "89389cce30e6a5147dd99e000e9502cc06513f6309ef97a134662ec62a9ead57",
   "metrics": {
     "query_execution_rate": 1.0,
     "nonempty_result_rate": 1.0,
     "expected_columns_rate": 1.0,
+    "answer_accuracy": 1.0,
     "chart_selection_rate": 1.0,
     "read_only_rate": 1.0,
     "trace_completion_rate": 1.0,
-    "average_latency_seconds": 0.0010012283336739832,
-    "p95_latency_seconds": 0.0012735000054817647
+    "fallback_rate": 0.0,
+    "average_latency_seconds": 0.001608456666872371,
+    "p95_latency_seconds": 0.0018249999993713573
   },
   "mode": "local-template",
   "segments": {
@@ -18,101 +20,121 @@
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0009183000001939945,
-      "p95_latency_seconds": 0.0013201999972807243
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.0009293600014643744,
+      "p95_latency_seconds": 0.0013246000016806647
     },
     "category:fallback": {
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0009529999981168658,
-      "p95_latency_seconds": 0.001047199999447912
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.0019190399994840845,
+      "p95_latency_seconds": 0.004243200004566461
     },
     "category:product": {
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0009183799993479624,
-      "p95_latency_seconds": 0.0011884999985340983
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.0010219200019491836,
+      "p95_latency_seconds": 0.0016461000050185248
     },
     "category:refund": {
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0011240000007092022,
-      "p95_latency_seconds": 0.0013760000001639128
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.0013925000006565825,
+      "p95_latency_seconds": 0.003146200004266575
     },
     "category:security": {
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0009549600043101236,
-      "p95_latency_seconds": 0.0012623000075109303
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.0014044200011994689,
+      "p95_latency_seconds": 0.0018249999993713573
     },
     "category:status": {
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0007849100002204068,
-      "p95_latency_seconds": 0.0009741999965626746
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.0009346999984700232,
+      "p95_latency_seconds": 0.001512900009402074
     },
     "category:trend": {
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0013078000003588386,
-      "p95_latency_seconds": 0.004535599990049377
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.0037105299983522856,
+      "p95_latency_seconds": 0.025311999997938983
     },
     "difficulty:easy": {
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0013421800002106465,
-      "p95_latency_seconds": 0.004535599990049377
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.003766430000541732,
+      "p95_latency_seconds": 0.025311999997938983
     },
     "difficulty:hard": {
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0009573142851877492,
-      "p95_latency_seconds": 0.0012735000054817647
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.0011558142869034782,
+      "p95_latency_seconds": 0.0016461000050185248
     },
     "difficulty:medium": {
       "query_execution_rate": 1.0,
       "nonempty_result_rate": 1.0,
       "expected_columns_rate": 1.0,
+      "answer_accuracy": 1.0,
       "chart_selection_rate": 1.0,
       "read_only_rate": 1.0,
       "trace_completion_rate": 1.0,
-      "average_latency_seconds": 0.0009021409105943432,
-      "p95_latency_seconds": 0.0011884999985340983
+      "fallback_rate": 0.0,
+      "average_latency_seconds": 0.0012036499988012524,
+      "p95_latency_seconds": 0.0016559999930905178
     }
   },
   "cases": [
@@ -122,17 +144,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.004535599990049377,
+      "latency_seconds": 0.025311999997938983,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "sales_02",
@@ -140,17 +166,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0010925999958999455,
+      "latency_seconds": 0.0018196999881183729,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "sales_03",
@@ -158,17 +188,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0009051000088220462,
+      "latency_seconds": 0.0016559999930905178,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "sales_04",
@@ -176,17 +210,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0008287000091513619,
+      "latency_seconds": 0.0010529999999562278,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "sales_05",
@@ -194,17 +232,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0007369000086328015,
+      "latency_seconds": 0.0011762000067392364,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "sales_06",
@@ -212,17 +254,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.000796499996795319,
+      "latency_seconds": 0.0011800000065704808,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "sales_07",
@@ -230,17 +276,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.000720199997886084,
+      "latency_seconds": 0.0010424999927636236,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "sales_08",
@@ -248,17 +298,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0012376999948173761,
+      "latency_seconds": 0.001264999998966232,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "sales_09",
@@ -266,17 +320,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0012735000054817647,
+      "latency_seconds": 0.0012736999924527481,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "sales_10",
@@ -284,17 +342,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0009511999960523099,
+      "latency_seconds": 0.0013272000069264323,
       "error": "",
       "actual_columns": [
         "month",
         "order_count",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT substr(order_date, 1, 7) AS month,\n       COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS revenue\nFROM orders\nWHERE status IN ('paid', 'shipped', 'completed')\nGROUP BY substr(order_date, 1, 7)\nORDER BY month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_01",
@@ -302,11 +364,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0012461000005714595,
+      "latency_seconds": 0.003146200004266575,
       "error": "",
       "actual_columns": [
         "month",
@@ -314,7 +377,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_02",
@@ -322,11 +388,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0010369000083301216,
+      "latency_seconds": 0.0012212000001454726,
       "error": "",
       "actual_columns": [
         "month",
@@ -334,7 +401,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_03",
@@ -342,11 +412,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0012123000051360577,
+      "latency_seconds": 0.0013098999916110188,
       "error": "",
       "actual_columns": [
         "month",
@@ -354,7 +425,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_04",
@@ -362,11 +436,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.001031799998600036,
+      "latency_seconds": 0.0011866999993799254,
       "error": "",
       "actual_columns": [
         "month",
@@ -374,7 +449,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_05",
@@ -382,11 +460,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0010176000068895519,
+      "latency_seconds": 0.001071799997589551,
       "error": "",
       "actual_columns": [
         "month",
@@ -394,7 +473,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_06",
@@ -402,11 +484,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0011098999966634437,
+      "latency_seconds": 0.0011360000062268227,
       "error": "",
       "actual_columns": [
         "month",
@@ -414,7 +497,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_07",
@@ -422,11 +508,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0009636000031605363,
+      "latency_seconds": 0.001283199992030859,
       "error": "",
       "actual_columns": [
         "month",
@@ -434,7 +521,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_08",
@@ -442,11 +532,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0010615999926812947,
+      "latency_seconds": 0.0011309999972581863,
       "error": "",
       "actual_columns": [
         "month",
@@ -454,7 +545,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_09",
@@ -462,11 +556,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0013760000001639128,
+      "latency_seconds": 0.001363700008369051,
       "error": "",
       "actual_columns": [
         "month",
@@ -474,7 +569,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "refund_10",
@@ -482,11 +580,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 12,
-      "latency_seconds": 0.0011841999948956072,
+      "latency_seconds": 0.0010753000096883625,
       "error": "",
       "actual_columns": [
         "month",
@@ -494,7 +593,10 @@
         "revenue",
         "refund_count",
         "refund_rate_pct"
-      ]
+      ],
+      "executed_sql": "WITH monthly AS (\n    SELECT substr(order_date, 1, 7) AS month,\n           COUNT(*) AS order_count,\n           ROUND(SUM(total_amount), 2) AS revenue\n    FROM orders\n    WHERE status IN ('paid', 'shipped', 'completed')\n    GROUP BY substr(order_date, 1, 7)\n), refund_monthly AS (\n    SELECT substr(refund_date, 1, 7) AS month,\n           COUNT(*) AS refund_count,\n           ROUND(SUM(amount), 2) AS refund_amount\n    FROM refunds\n    GROUP BY substr(refund_date, 1, 7)\n)\nSELECT monthly.month,\n       monthly.order_count,\n       monthly.revenue,\n       COALESCE(refund_monthly.refund_count, 0) AS refund_count,\n       ROUND(COALESCE(refund_monthly.refund_count, 0) * 100.0 / monthly.order_count, 2) AS refund_rate_pct\nFROM monthly\nLEFT JOIN refund_monthly ON monthly.month = refund_monthly.month\nORDER BY monthly.month\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_01",
@@ -502,18 +604,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.0008121999999275431,
+      "latency_seconds": 0.0013246000016806647,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_02",
@@ -521,18 +627,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.0013201999972807243,
+      "latency_seconds": 0.0008898000087356195,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_03",
@@ -540,18 +650,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.0008624000038253143,
+      "latency_seconds": 0.0010316999978385866,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_04",
@@ -559,18 +673,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.0008516000089002773,
+      "latency_seconds": 0.0008431000023847446,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_05",
@@ -578,18 +696,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.0007883999933255836,
+      "latency_seconds": 0.0008855999913066626,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_06",
@@ -597,18 +719,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.000888400012627244,
+      "latency_seconds": 0.0008280000038212165,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_07",
@@ -616,18 +742,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.0008496000082232058,
+      "latency_seconds": 0.0009184999944409356,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_08",
@@ -635,18 +765,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.0009228999988408759,
+      "latency_seconds": 0.0008262000046670437,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_09",
@@ -654,18 +788,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.0008587999909650534,
+      "latency_seconds": 0.0009008000051835552,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "category_10",
@@ -673,18 +811,22 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 6,
-      "latency_seconds": 0.001028499988024123,
+      "latency_seconds": 0.0008453000045847148,
       "error": "",
       "actual_columns": [
         "category",
         "order_count",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.category AS category,\n       COUNT(DISTINCT o.id) AS order_count,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id\nJOIN products p ON p.id = oi.product_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.category\nORDER BY revenue DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_01",
@@ -692,17 +834,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 5,
-      "latency_seconds": 0.0009741999965626746,
+      "latency_seconds": 0.0010959999926853925,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
         "total_amount"
-      ]
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount\nFROM orders\n\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_02",
@@ -710,17 +856,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 5,
-      "latency_seconds": 0.000706300008459948,
+      "latency_seconds": 0.0008998999983305112,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
         "total_amount"
-      ]
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount\nFROM orders\n\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_03",
@@ -728,17 +878,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 5,
-      "latency_seconds": 0.000752499996451661,
+      "latency_seconds": 0.0008086000016191974,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
         "total_amount"
-      ]
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount\nFROM orders\n\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_04",
@@ -746,17 +900,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
-      "row_count": 5,
-      "latency_seconds": 0.0007455000013578683,
+      "row_count": 3,
+      "latency_seconds": 0.0008484999998472631,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
         "total_amount"
-      ]
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount\nFROM orders\n\nWHERE status IN ('paid', 'pending', 'cancelled')\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_05",
@@ -764,17 +922,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 5,
-      "latency_seconds": 0.0007662999996682629,
+      "latency_seconds": 0.0007784999907016754,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
         "total_amount"
-      ]
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount\nFROM orders\n\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_06",
@@ -782,17 +944,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 5,
-      "latency_seconds": 0.0007841000042390078,
+      "latency_seconds": 0.0010669999901438132,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
         "total_amount"
-      ]
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount\nFROM orders\n\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_07",
@@ -800,17 +966,23 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 5,
-      "latency_seconds": 0.0006750000029569492,
+      "latency_seconds": 0.001512900009402074,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
-        "total_amount"
-      ]
+        "total_amount",
+        "order_share_pct",
+        "amount_share_pct"
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount,\n       ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS order_share_pct,\n       ROUND(SUM(total_amount) * 100.0 / SUM(SUM(total_amount)) OVER (), 2) AS amount_share_pct\nFROM orders\n\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_08",
@@ -818,17 +990,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 5,
-      "latency_seconds": 0.0008545000018784776,
+      "latency_seconds": 0.0007501000072807074,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
         "total_amount"
-      ]
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount\nFROM orders\n\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_09",
@@ -836,17 +1012,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 5,
-      "latency_seconds": 0.0006932999967830256,
+      "latency_seconds": 0.000836199993500486,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
         "total_amount"
-      ]
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount\nFROM orders\n\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "status_10",
@@ -854,17 +1034,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 5,
-      "latency_seconds": 0.000897399993846193,
+      "latency_seconds": 0.0007493000011891127,
       "error": "",
       "actual_columns": [
         "status",
         "order_count",
         "total_amount"
-      ]
+      ],
+      "executed_sql": "SELECT status, COUNT(*) AS order_count,\n       ROUND(SUM(total_amount), 2) AS total_amount\nFROM orders\n\nGROUP BY status\nORDER BY order_count DESC\nLIMIT 500",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_01",
@@ -872,17 +1056,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0007605999999213964,
+      "latency_seconds": 0.0011252000113017857,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY units_sold DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_02",
@@ -890,17 +1078,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0009371000051032752,
+      "latency_seconds": 0.00082970000221394,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY units_sold DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_03",
@@ -908,17 +1100,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0011884999985340983,
+      "latency_seconds": 0.0008856999920681119,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY units_sold DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_04",
@@ -926,17 +1122,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0010416000004624948,
+      "latency_seconds": 0.0010631000041030347,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY units_sold DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_05",
@@ -944,17 +1144,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0007822999905329198,
+      "latency_seconds": 0.0008569999918108806,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY units_sold DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_06",
@@ -962,17 +1166,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0009433999948669225,
+      "latency_seconds": 0.0010076000035041943,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY units_sold DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_07",
@@ -980,17 +1188,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0007688000041525811,
+      "latency_seconds": 0.0009804000001167879,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY units_sold DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_08",
@@ -998,17 +1210,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0008828999998513609,
+      "latency_seconds": 0.0008602000016253442,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY units_sold DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_09",
@@ -1016,17 +1232,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0007871999987401068,
+      "latency_seconds": 0.0016461000050185248,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY revenue DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "product_10",
@@ -1034,17 +1254,21 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 10,
-      "latency_seconds": 0.0010914000013144687,
+      "latency_seconds": 0.0009642000077292323,
       "error": "",
       "actual_columns": [
         "product",
         "units_sold",
         "revenue"
-      ]
+      ],
+      "executed_sql": "SELECT p.name AS product,\n       SUM(oi.quantity) AS units_sold,\n       ROUND(SUM(oi.quantity * oi.unit_price), 2) AS revenue\nFROM order_items oi\nJOIN products p ON p.id = oi.product_id\nJOIN orders o ON o.id = oi.order_id\nWHERE o.status IN ('paid', 'shipped', 'completed')\nGROUP BY p.id, p.name\nORDER BY units_sold DESC\nLIMIT 10",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "unknown_01",
@@ -1052,11 +1276,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.0009757999941939488,
+      "latency_seconds": 0.004243200004566461,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1064,7 +1289,10 @@
         "status",
         "total_amount",
         "region"
-      ]
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "unknown_02",
@@ -1072,11 +1300,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.0008375000033993274,
+      "latency_seconds": 0.00156309999874793,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1084,7 +1313,10 @@
         "status",
         "total_amount",
         "region"
-      ]
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "unknown_03",
@@ -1092,11 +1324,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.0008096999954432249,
+      "latency_seconds": 0.001334500004304573,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1104,6 +1337,11 @@
         "status",
         "total_amount",
         "region"
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": [
+        "检测到写操作意图；已拒绝执行，并改为返回安全的只读数据预览。"
       ]
     },
     {
@@ -1112,11 +1350,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.0012623000075109303,
+      "latency_seconds": 0.0018249999993713573,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1124,6 +1363,11 @@
         "status",
         "total_amount",
         "region"
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": [
+        "检测到写操作意图；已拒绝执行，并改为返回安全的只读数据预览。"
       ]
     },
     {
@@ -1132,11 +1376,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.0009270000009564683,
+      "latency_seconds": 0.0015760999958729371,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1144,6 +1389,11 @@
         "status",
         "total_amount",
         "region"
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": [
+        "检测到写操作意图；已拒绝执行，并改为返回安全的只读数据预览。"
       ]
     },
     {
@@ -1152,11 +1402,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.001047199999447912,
+      "latency_seconds": 0.0015519000007770956,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1164,7 +1415,10 @@
         "status",
         "total_amount",
         "region"
-      ]
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "unknown_07",
@@ -1172,11 +1426,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.0008645000052638352,
+      "latency_seconds": 0.0012475000112317502,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1184,6 +1439,11 @@
         "status",
         "total_amount",
         "region"
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": [
+        "检测到写操作意图；已拒绝执行，并改为返回安全的只读数据预览。"
       ]
     },
     {
@@ -1192,11 +1452,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.0009082999895326793,
+      "latency_seconds": 0.0011916999937966466,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1204,7 +1465,10 @@
         "status",
         "total_amount",
         "region"
-      ]
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "unknown_09",
@@ -1212,11 +1476,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.0009113000123761594,
+      "latency_seconds": 0.0010389999952167273,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1224,7 +1489,10 @@
         "status",
         "total_amount",
         "region"
-      ]
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": []
     },
     {
       "case_id": "unknown_10",
@@ -1232,11 +1500,12 @@
       "executed": true,
       "nonempty": true,
       "columns_match": true,
+      "answer_match": true,
       "chart_match": true,
       "read_only": true,
       "trace_complete": true,
       "row_count": 20,
-      "latency_seconds": 0.0009962000040104613,
+      "latency_seconds": 0.0010452999995322898,
       "error": "",
       "actual_columns": [
         "order_id",
@@ -1244,7 +1513,10 @@
         "status",
         "total_amount",
         "region"
-      ]
+      ],
+      "executed_sql": "SELECT o.id AS order_id, o.order_date, o.status,\n       ROUND(o.total_amount, 2) AS total_amount,\n       u.region\nFROM orders o\nJOIN users u ON u.id = o.user_id\nORDER BY o.order_date DESC, o.id DESC\nLIMIT 20",
+      "fallback_used": false,
+      "warnings": []
     }
   ]
 }

@@ -100,6 +100,12 @@ def _render_result(result: AnalysisResult) -> None:
     with st.container(border=True):
         st.subheader(result.title)
         st.info(result.summary)
+        if result.evidence:
+            st.markdown("**数据证据**")
+            for evidence in result.evidence:
+                rows = ", ".join(str(number) for number in evidence.get("row_numbers", []))
+                suffix = f"（结果第 {rows} 行）" if rows else ""
+                st.success(f"{evidence['claim']}{suffix}")
         _render_chart(result)
         st.dataframe(
             result.dataframe().rename(columns=COLUMN_LABELS),
@@ -170,6 +176,10 @@ def _use_selected_example() -> None:
 def _switch_data_source() -> None:
     st.session_state["analysis_result"] = None
     if st.session_state.get("data_source") == "演示电商数据":
+        uploaded_dataset = st.session_state.get("uploaded_dataset")
+        if uploaded_dataset is not None:
+            uploaded_dataset.database.close()
+            st.session_state["uploaded_dataset"] = None
         st.session_state["analysis_question"] = EXAMPLES[0]
     else:
         st.session_state["analysis_question"] = "统计每个数据表的记录数，并概括主要字段"
@@ -187,15 +197,7 @@ with st.sidebar:
         ["本地模板（离线）", "DeepSeek 规划"],
         index=1 if settings.model_configured else 0,
     )
-    model_options = list(
-        dict.fromkeys(
-            [
-                settings.default_model,
-                "deepseek-ai/DeepSeek-V4-FLASH",
-                "deepseek-ai/DeepSeek-R1",
-            ]
-        )
-    )
+    model_options = list(settings.allowed_models)
     model = st.selectbox("模型", model_options, disabled=mode == "本地模板（离线）")
     st.success("全部查询默认只读")
     st.caption("写操作、管理操作和多语句 SQL 会在执行前被拦截。")
@@ -229,11 +231,14 @@ if source == "上传 CSV":
         ):
             try:
                 payload = [(file.name, file.getvalue()) for file in uploaded_files]
-                st.session_state["uploaded_dataset"] = load_csv_dataset(payload)
+                next_dataset = load_csv_dataset(payload)
+                previous_dataset = st.session_state.get("uploaded_dataset")
+                if previous_dataset is not None:
+                    previous_dataset.database.close()
+                st.session_state["uploaded_dataset"] = next_dataset
                 st.session_state["analysis_result"] = None
                 st.success("CSV 已加载到当前会话的内存数据库。")
             except CSVUploadError as exc:
-                st.session_state["uploaded_dataset"] = None
                 st.error(f"CSV 导入失败：{exc}")
 
     uploaded_dataset: UploadedDataset | None = st.session_state["uploaded_dataset"]
